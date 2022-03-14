@@ -9,6 +9,7 @@ import static spark.Spark.post;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import org.apache.logging.log4j.*;
 
 import spark.ModelAndView;
 import spark.template.mustache.MustacheTemplateEngine;
@@ -30,7 +31,13 @@ public static boolean search(ArrayList<Integer> array, int e) {
 
 public static void main(String[] args) {
     
-    port(4567);
+    port(getHerokuAssignedPort());
+    Logger logger = LogManager.getLogger(App.class);
+
+        int port = Integer.parseInt(System.getenv("PORT"));
+        port(port);
+        logger.error("Current port number:" + port);
+
 
     get("/", (req, res) -> "Hello, World");
 

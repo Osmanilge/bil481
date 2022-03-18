@@ -28,13 +28,24 @@ public static boolean search(ArrayList<Integer> array, int e) {
   }
   return false;
 }
+public static boolean ensureMeanOfLists(ArrayList<Integer> array,ArrayList<Integer> array2, double diff) {
+  int length=array.size();
+      double mean=0;
+      for(int i=0;i<length;i++)mean+=(double)array.get(i)/length;
+
+      int length2=array2.size();
+      double mean2=0;
+      for(int i=0;i<length2;i++)mean2+=(double)array2.get(i)/length2;
+      if(mean-mean2==diff || mean2-mean==diff)return true;
+      return false;
+}
 
 public static void main(String[] args) {
     
     port(getHerokuAssignedPort());
     Logger logger = LogManager.getLogger(App.class);
 
-        int port =Integer.parseInt(System.getenv("PORT"));//
+        int port =4567;//Integer.parseInt(System.getenv("PORT"));
         port(port);
         logger.error("Current port number:" + port);
 
@@ -70,19 +81,12 @@ public static void main(String[] args) {
       }
       sc2.close();
       String diff = req.queryParams("Diff").replaceAll("\\s","");
-      int length=inputList.size();
-      double mean=0;
-      for(int i=0;i<length;i++)mean+=(double)inputList.get(i)/length;
-
-      int length2=inputList2.size();
-      double mean2=0;
-      for(int i=0;i<length2;i++)mean2+=(double)inputList2.get(i)/length2;
-
+      
       
       //int input2AsInt = Integer.parseInt(input2);
 
-      boolean result = false;//App.search(inputList, input2AsInt);
-      if(mean-mean2==Double.parseDouble(diff) || mean2-mean==Double.parseDouble(diff))result=true;
+      boolean result = App.ensureMeanOfLists(inputList,inputList2,Double.parseDouble(diff));//App.search(inputList, input2AsInt);
+      
         //System.out.println(mean+" "+mean2+" "+diff+"l"+length+length2+"\n\n\n");
       Map<String, Boolean> map = new HashMap<String, Boolean>();
       map.put("result", result);

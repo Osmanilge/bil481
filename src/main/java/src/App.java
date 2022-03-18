@@ -58,11 +58,14 @@ public static void main(String[] args) {
       System.out.println(inputList);
       java.util.ArrayList<Integer> inputList2 = new java.util.ArrayList<>();
 
-      String input2 = req.queryParams("input2").replaceAll("\\s","");
+      
+      String input2 = req.queryParams("input2");//.replaceAll("\\s","");
       java.util.Scanner sc2 = new java.util.Scanner(input2);
+      sc2.useDelimiter("[;\r\n]+");
       while (sc2.hasNext())
       {
         int value = Integer.parseInt(sc2.next().replaceAll("\\s",""));
+        //System.out.println(value+"\n");
         inputList2.add(value);
       }
       sc2.close();
@@ -79,11 +82,8 @@ public static void main(String[] args) {
       //int input2AsInt = Integer.parseInt(input2);
 
       boolean result = false;//App.search(inputList, input2AsInt);
-      if(mean-mean2==Double.parseDouble(diff)){
-        
-
-        result=true;}
-        System.out.println(mean+" "+mean2+" "+diff+"\n\n\n");
+      if(mean-mean2==Double.parseDouble(diff) || mean2-mean==Double.parseDouble(diff))result=true;
+        //System.out.println(mean+" "+mean2+" "+diff+"l"+length+length2+"\n\n\n");
       Map<String, Boolean> map = new HashMap<String, Boolean>();
       map.put("result", result);
       return new ModelAndView(map, "compute.mustache");

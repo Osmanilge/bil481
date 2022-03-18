@@ -34,7 +34,7 @@ public static void main(String[] args) {
     port(getHerokuAssignedPort());
     Logger logger = LogManager.getLogger(App.class);
 
-        int port = Integer.parseInt(System.getenv("PORT"));//
+        int port =4567; //Integer.parseInt(System.getenv("PORT"));//
         port(port);
         logger.error("Current port number:" + port);
 
@@ -60,7 +60,7 @@ public static void main(String[] args) {
 
       String input2 = req.queryParams("input2").replaceAll("\\s","");
       java.util.Scanner sc2 = new java.util.Scanner(input2);
-      while (sc1.hasNext())
+      while (sc2.hasNext())
       {
         int value = Integer.parseInt(sc2.next().replaceAll("\\s",""));
         inputList2.add(value);

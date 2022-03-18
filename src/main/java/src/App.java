@@ -71,7 +71,7 @@ public static void main(String[] args) {
       double mean=0;
       for(int i=0;i<length;i++)mean+=(double)inputList.get(i)/length;
 
-      int length2=inputList.size();
+      int length2=inputList2.size();
       double mean2=0;
       for(int i=0;i<length2;i++)mean2+=(double)inputList2.get(i)/length2;
 

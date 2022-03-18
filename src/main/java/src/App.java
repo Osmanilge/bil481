@@ -56,12 +56,30 @@ public static void main(String[] args) {
       }
       sc1.close();
       System.out.println(inputList);
-
+      java.util.ArrayList<Integer> inputList2 = new java.util.ArrayList<>();
 
       String input2 = req.queryParams("input2").replaceAll("\\s","");
-      int input2AsInt = Integer.parseInt(input2);
+      java.util.Scanner sc2 = new java.util.Scanner(input2);
+      while (sc1.hasNext())
+      {
+        int value = Integer.parseInt(sc2.next().replaceAll("\\s",""));
+        inputList2.add(value);
+      }
+      sc2.close();
+      String diff = req.queryParams("Diff").replaceAll("\\s","");
+      int length=inputList.size();
+      double mean=0;
+      for(int i=0;i<length;i++)mean+=(double)inputList.get(i)/length;
 
-      boolean result = App.search(inputList, input2AsInt);
+      int length2=inputList.size();
+      double mean2=0;
+      for(int i=0;i<length2;i++)mean2+=(double)inputList.get(i)/length2;
+
+      
+      //int input2AsInt = Integer.parseInt(input2);
+
+      boolean result = false;//App.search(inputList, input2AsInt);
+      if(mean-mean2==Double.parseDouble(diff))result=true;
 
       Map<String, Boolean> map = new HashMap<String, Boolean>();
       map.put("result", result);

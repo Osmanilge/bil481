@@ -37,7 +37,7 @@ class AppTest {
 
     @Test
     public void testNull() {
-      assertFalse(App.ensureMeanOfLists(null,null, 0));
+      assertThrows(java.lang.NullPointerException.class,()->App.ensureMeanOfLists(null,null, 0));
     }
 
 }

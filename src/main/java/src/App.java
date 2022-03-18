@@ -34,7 +34,7 @@ public static void main(String[] args) {
     port(getHerokuAssignedPort());
     Logger logger = LogManager.getLogger(App.class);
 
-        int port =4567;// Integer.parseInt(System.getenv("PORT"));//
+        int port = Integer.parseInt(System.getenv("PORT"));//
         port(port);
         logger.error("Current port number:" + port);
 

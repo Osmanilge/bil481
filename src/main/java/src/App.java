@@ -79,8 +79,11 @@ public static void main(String[] args) {
       //int input2AsInt = Integer.parseInt(input2);
 
       boolean result = false;//App.search(inputList, input2AsInt);
-      if(mean-mean2==Double.parseDouble(diff))result=true;
+      if(mean-mean2==Double.parseDouble(diff)){
+        
 
+        result=true;}
+        System.out.println(mean+" "+mean2+" "+diff+"\n\n\n");
       Map<String, Boolean> map = new HashMap<String, Boolean>();
       map.put("result", result);
       return new ModelAndView(map, "compute.mustache");

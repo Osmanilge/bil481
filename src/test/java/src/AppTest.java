@@ -15,26 +15,29 @@ class AppTest {
         assertNotNull(classUnderTest.getGreeting(), "app should have a greeting");
     }
     @Test
-   public void testFound() {
-      ArrayList<Integer> array = new ArrayList<>(Arrays.asList(1, 2, 3, 4));
-      assertTrue(App.search(array, 4));
+   public void testDiff_1() {
+      ArrayList<Integer> array = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5));
+      ArrayList<Integer> array2 = new ArrayList<>(Arrays.asList(1, 3, 8));
+      assertTrue(App.ensureMeanOfLists(array,array2, 1));
     }
 
     @Test
-    public void testNotFound() {
-      ArrayList<Integer> array = new ArrayList<>(Arrays.asList(1, 2, 3, 4));
-      assertFalse(App.search(array, 5));
+    public void testNotDiff_7() {
+      ArrayList<Integer> array = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5));
+      ArrayList<Integer> array2 = new ArrayList<>(Arrays.asList(0, 2, 3, 4 , 7));
+      assertFalse(App.ensureMeanOfLists(array,array2, 7));
     }
 
     @Test
-    public void testEmptyArray() {
+    public void testEmptyArrays() {
       ArrayList<Integer> array = new ArrayList<>();
-      assertFalse(App.search(array, 1));
+      ArrayList<Integer> array2 = new ArrayList<>();
+      assertFalse(App.ensureMeanOfLists(array,array2, 1));
     }
 
     @Test
     public void testNull() {
-      assertFalse(App.search(null, 1));
+      assertFalse(App.ensureMeanOfLists(null,null, 0));
     }
 
 }
